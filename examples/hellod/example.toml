@@ -1,0 +1,8 @@
+[example]
+title = "hellod and its three Dockerfiles"
+summary = "one program, three images, each smaller than the last"
+run = "docker build -f Dockerfile.scratch -t hellod:scratch ."
+
+[[files]]
+path = "../../Dockerfile.scratch"
+note = "multi-stage build into an empty base"
