@@ -1,0 +1,29 @@
+metadata:
+  version: 1.0.0
+  description: "hellod reports the uid it runs as, so an image can prove it is not root"
+  references:
+  - 'Docker USER instruction'
+equations:
+  status_reports_uid:
+    formula: "status(uid) names root only when uid == 0"
+    invariants:
+    - A non-zero uid is always printed as a number
+    preconditions:
+    - 'uid is read from /proc/self/status'
+    postconditions:
+    - 'the scratch image prints a uid line that is not root'
+    lean_theorem: none_repository_fact
+proof_obligations:
+- type: invariant
+  property: "root is reported only for uid 0"
+falsification_tests:
+- id: FALSIFY-HELLO-001
+  rule: "status names root only for uid 0"
+  prediction: "status_names_root_and_others fails if uid 10001 is reported as root"
+  if_fails: "a non-root image would be reported as root"
+kani_harnesses:
+- id: KANI-HELLO-001
+  obligation: "root is reported only for uid 0"
+  bound: 4
+  strategy: bounded_int
+  solver: cadical

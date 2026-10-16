@@ -1,0 +1,24 @@
+[package]
+name = "hellod"
+version = "0.1.0"
+edition = "2021"
+description = "Tiny static program used to teach production Docker images"
+license = "MIT"
+publish = false
+exclude = ["scripts/", ".github/"]
+
+[lib]
+name = "hellod"
+path = "src/lib.rs"
+
+[[bin]]
+name = "hellod"
+path = "src/main.rs"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "deny", priority = -1 }
+
+[workspace]

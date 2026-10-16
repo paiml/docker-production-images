@@ -1,0 +1,12 @@
+[course]
+slug = "docker-production-images"
+number = 2
+title = "Docker Production Images"
+tagline = "Multi-stage builds, static binaries and tiny images, measured."
+description = "Tested Rust code for the second course of the Docker specialization: hellod is a tiny static program built into a single-stage, a multi-stage and a scratch image, so the size and the attack surface of each can be measured."
+prerequisites = ["Docker 25 or newer with buildx", "Rust 1.80 or newer", "A Linux or macOS terminal"]
+
+[[examples]]
+dir = "examples/hellod"
+title = "hellod and its three Dockerfiles"
+summary = "one program, three images, each smaller than the last"
